@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 interface CardProps {
     year: number;
@@ -8,10 +9,15 @@ const Card = ({year}: CardProps) => {
     const goToYear = () => {
         console.log("going to year");
     }
+
+    const navigate = useNavigate();
+    const goToUsers = () => {
+        navigate("/users");
+    }
     return(
         <>
         <button>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg" onClick={() => goToYear()}>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg" onClick={() => goToUsers()}>
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2 text-white">{year}</div>
                     <p className="text-gray-700 text-base">

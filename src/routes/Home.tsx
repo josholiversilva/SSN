@@ -1,4 +1,6 @@
 import React from "react";
+import Card from '../components/Card';
+import CreateCard from '../components/CreateCard';
 
 const Home = () => {
     return (

@@ -1,19 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import Home from './routes/Home';
-import Card from './components/Card';
-import CreateCard from './components/CreateCard';
+import Users from './routes/Users';
+import User from './routes/User';
+import Wishlist from './routes/user/Wishlist';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/:user" element={<User />} />
+          <Route path="/user/wishlist" element={<Wishlist />} />
         </Routes>
-      </BrowserRouter>
-      
     </>
   );
 }
