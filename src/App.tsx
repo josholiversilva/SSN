@@ -18,10 +18,9 @@ function App() {
         <div className="ml-4 mt-4 mr-4">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/users/:user/wishlist" element={<Wishlist />} />
           <Route path="/groups/:group/:year" element={<Year />} />
           <Route path="/groups/:group/users" element={<Users />} />
-          <Route path="/groups/:group/users/:user" element={<User />} />
+          <Route path="groups/SSN/users/:user/wishlist" element={<Wishlist />} />
         </Routes>
         </div>
       </div>
