@@ -3,21 +3,22 @@ import { useNavigate } from 'react-router-dom';
 
 interface CardProps {
     year: number;
+    group: string
 }
 
-const Card = ({year}: CardProps) => {
+const Card = ({year, group}: CardProps) => {
     const goToYear = () => {
         console.log("going to year");
     }
 
     const navigate = useNavigate();
     const goToUsers = () => {
-        navigate("/users");
+        navigate(`/groups/${group}/users`);
     }
     return(
         <>
-        <button>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg" onClick={() => goToUsers()}>
+        <button className="mr-8 hover:bg-gray-800 rounded-lg">
+            <div className="max-w-sm rounded-lg overflow-hidden shadow-lg h-full" onClick={() => goToUsers()}>
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2 text-white">{year}</div>
                     <p className="text-gray-700 text-base">
