@@ -31,7 +31,7 @@ const Header = () => {
             </div>
             <div className="fixed w-full">
                 <div className={`float-right text-right text-white bg-gray-600 rounded-lg p-2 w-1/4 ${isDropdown ? "visible" : "invisible"}`}>
-                <div onClick={() => goToProfile()}>Profile</div>
+                <button><div onClick={() => goToProfile()}>Profile</div></button>
                 <div>Logout</div>
                 </div>
             </div>

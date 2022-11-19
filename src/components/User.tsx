@@ -19,10 +19,8 @@ const User = ({...params}:UserProps) => {
                     <h4 className="font-bold text-lg text-pink-600">{params.user.name}</h4>
                     <p className="mt-1 flex-1 font-light text-sm text-slate-500">{params.user.age === -1 ? "" : params.user.age}</p>
 
-                    <button onClick={() => params.handleGoToWishlist(params.user.name === undefined ? "" : params.user.name)}>
-                        <div className="mt-2 inline-block px-2 py-1 border bg-blue-500 text-center text-white text-sm hover:underline">
+                    <button className="mt-2 inline-block px-2 py-1 border bg-blue-500 text-center text-white text-sm hover:underline" onClick={() => params.handleGoToWishlist(params.user.name === undefined ? "" : params.user.name)}>
                             Wishlist
-                        </div>
                     </button>
 
                 </div>
