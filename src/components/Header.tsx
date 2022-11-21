@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from '../logo.svg'
 
-const Header = () => {
+interface HeaderProps {
+    user: string
+}
+
+const Header = ({...params}: HeaderProps) => {
+    console.log("user = " + params.user)
     const [isDropdown, setIsDropdown] = useState(false);
     const navigate = useNavigate();
     const goToHome = () => {
         navigate("/")
     }
 
-    const goToProfile = () => {
-        navigate("/")
+    const goToProfile = (user:string) => {
+        console.log("user = " + user)
+        navigate(`/${user}`)
     }
 
     return (
@@ -31,7 +37,7 @@ const Header = () => {
             </div>
             <div className="fixed w-full">
                 <div className={`float-right text-right text-white bg-gray-600 rounded-lg p-2 w-1/4 ${isDropdown ? "visible" : "invisible"}`}>
-                <button><div onClick={() => goToProfile()}>Profile</div></button>
+                <button><div onClick={() => goToProfile(params.user)}>Profile</div></button>
                 <div>Logout</div>
                 </div>
             </div>
