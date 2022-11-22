@@ -7,7 +7,7 @@ import Group from "../components/Group";
 const Home = () => {
     const navigate = useNavigate();
     const goToGroup = (group: string) => {
-        navigate(`/groups/${group}/`);
+        navigate(`/groups/${group}/2022`);
     }
     return (
         <Group name={"SSN"} />

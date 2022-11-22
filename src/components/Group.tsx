@@ -10,13 +10,12 @@ interface GroupInterface {
 const Group = ({name}: GroupInterface) => {
     return (
         <>
-            <div className="w-full h-1/3">
+            <div className="w-full h-1/3 flex-col space-y-4">
                 <div className="text-white h-10">
                     {name}
                 </div>
                 <div className="">
                     <Card year={2022} group={name} />
-                    <CreateCard />
                 </div>
             </div>
         </>

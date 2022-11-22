@@ -13,7 +13,7 @@ const Card = ({year, group}: CardProps) => {
 
     const navigate = useNavigate();
     const goToUsers = () => {
-        navigate(`/groups/${group}/users`);
+        navigate(`/groups/${group}/2022`);
     }
     return(
         <>
@@ -21,8 +21,8 @@ const Card = ({year, group}: CardProps) => {
             <div className="max-w-sm rounded-lg overflow-hidden shadow-lg h-full" onClick={() => goToUsers()}>
                 <div className="px-6 py-4">
                     <div className="font-bold text-xl mb-2 text-white">{year}</div>
-                    <p className="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                    <p className="text-gray-200 text-base">
+                        This year we're doing secret santa at Vince's house! Come through at 5pm
                     </p>
                 </div>
                 <div className="px-6 pt-4 pb-2">

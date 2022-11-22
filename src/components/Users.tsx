@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import User from "../components/User";
+import User from "./User";
 import UserEntity from "../entities/UserEntity";
 
 
@@ -29,11 +29,17 @@ const Users = () => {
     }
     return (
         <>
-        {
-            users.map(user => {
-                return <User user={user} handleGoToUser={goToUser} handleGoToWishlist={goToWishlist} />
-            })
-        }
+        <div className="flex-col space-y-4 w-full">
+            <div className="h1 w-full">People</div>
+            <div className="w-full h-1 bg-gray-400"></div>
+            <div>
+                {
+                    users.map(user => {
+                        return <User user={user} handleGoToUser={goToUser} handleGoToWishlist={goToWishlist} />
+                    })
+                }
+            </div>
+        </div>
         </>
     )
 }

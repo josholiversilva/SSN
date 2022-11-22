@@ -5,41 +5,54 @@ const WishlistForm = () => {
   const priceRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
+  const uuid = "3f68e019-d16a-4593-ae58-adc4da60a6f8"
+
   const handleSubmit = (event:any) => {
-    event.preventDefault()
+    let item = ""
+    let price = "" 
+    let description = ""
+    let url = ""
     console.log("submitting!")
     if (itemRef.current != null) {
       console.log("itemRef = " + itemRef.current.value)
+      item = itemRef.current.value
     }
     if (priceRef.current != null) {
       console.log("priceRef = " + priceRef.current.value)
+      price = priceRef.current.value
     }
     if (urlRef.current != null) {
       console.log("urlRef = " + urlRef.current.value)
+      url = urlRef.current.value
     }
     if (descriptionRef.current != null) {
       console.log("descriptionRef = " + descriptionRef.current.value)
+      description = descriptionRef.current.value
     }
 
-
+    postWishlist(item, price, url, description)
     event.target.reset();
   }
 
-  const postWishlist = async () => {
-      var data: never[] = []
-      /*
+  const postWishlist = async (item: string, price: string, url: string, description: string) => {
       try {
       const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${uuid}`, {
           mode:'cors',
-          method: 'GET',
+          method: 'POST',
+          body: JSON.stringify({
+            "year": 2022,
+            "item": item,
+            "price": price,
+            "description": description,
+            "url": url
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
       });
-      data = await resp.json();
       } catch(e) {
           console.log(e)
       }
-      console.log(data)
-      setWishlist(data)
-      */
   }
     return (
       <div className="flex flex-col justify-center h-full overflow-hidden">
@@ -92,7 +105,7 @@ const WishlistForm = () => {
               focus:ring-opacity-50
               text-black
             "
-                  placeholder="Cool socks"
+                  placeholder="20"
                 />
               </label>
             </div>

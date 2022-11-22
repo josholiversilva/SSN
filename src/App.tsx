@@ -5,7 +5,7 @@ import Groups from './routes/Groups';
 import Group from './routes/groups/Group';
 import Year from './routes/groups/group/Year';
 import Home from './routes/Home';
-import Users from './routes/Users';
+import Users from './components/Users';
 import User from './routes/groups/group/users/User';
 import UserComponent from './components/User';
 import Wishlist from './routes/groups/group/users/user/Wishlist';
@@ -44,16 +44,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-            <Route path="/:profile" element={<Profile />} />
+            <Route path="/:profile" element={
+              <Protected isLoggedIn={isLoggedIn}>
+                <Profile /> 
+              </Protected>} />
             <Route path="/groups/:group/:year" element={
               <Protected isLoggedIn={isLoggedIn}>
                 <Year />
               </Protected>} />
-            <Route path="/groups/:group/users" element={
-              <Protected isLoggedIn={isLoggedIn}>
-                <Users />
-              </Protected>} />
-            <Route path="groups/SSN/users/:user/wishlist" element={
+            <Route path="groups/SSN/:year/:user/wishlist" element={
               <Protected isLoggedIn={isLoggedIn}>
                 <Wishlist />
               </Protected>} />
