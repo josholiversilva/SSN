@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import EventInfoEntity from "../entities/EventInfoEntity";
 
 const EventInfo = () => {
+    const [eventInfo, setEventInfo] = useState<EventInfoEntity>();
+    const fetchEventInfo = async () => {
+        const resp = await fetch(`http://localhost:8080/api/v1/events/SSN/2022`, {mode:'cors'});
+        if (resp.ok) {
+            const json = await resp.json();
+            const info:EventInfoEntity = json;
+            setEventInfo(info)
+        }
+    }
+
+    useEffect(() => {
+        fetchEventInfo();
+    }, []);
+
     return (
         <>
         <div className="h1 text-white flex-col space-y-4">
@@ -8,17 +23,22 @@ const EventInfo = () => {
             <div className="w-full h-1 bg-gray-400"></div>
             <div className="flex space-x-4">
                 <div className="">Address: </div>
-                <div className="">6168 Natalie Rd, Chino Hills CA</div>
+                <div className="">{eventInfo?.address}</div>
+            </div>
+
+            <div className="flex space-x-4">
+                <div className="">Date: </div>
+                <div className="">{eventInfo?.date}</div>
             </div>
 
             <div className="flex space-x-4">
                 <div className="">Theme: </div>
-                <div className="">None!</div>
+                <div className="">{eventInfo?.theme}</div>
             </div>
 
             <div className="flex space-x-4">
-                <div className="">Limit: </div>
-                <div className="">None!</div>
+                <div className="">Price Limit: </div>
+                <div className="">{eventInfo?.price_limit}</div>
             </div>
         </div>
         </>
