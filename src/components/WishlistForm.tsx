@@ -5,7 +5,7 @@ const WishlistForm = () => {
   const priceRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
-  const uuid = "3f68e019-d16a-4593-ae58-adc4da60a6f8"
+  const uuid = localStorage.getItem("uuid") || ""
 
   const handleSubmit = (event:any) => {
     let item = ""

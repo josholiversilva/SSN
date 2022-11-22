@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import WishlistTable from "../../../../../components/WishlistTable";
+import UserEntity from "../../../../../entities/UserEntity";
 
 interface WishlistResponse {
     item: string,
@@ -9,14 +10,28 @@ interface WishlistResponse {
 }
 
 const Wishlist = () => {
-    const { user } = useParams();
-    const uuid = "3f68e019-d16a-4593-ae58-adc4da60a6f8"
+    const [user, setUser] = useState<UserEntity>({})
+    let { year, uuid } = useParams();
     const [wishlist, setWishlist] = useState([])
+
+    const fetchUsers = async () => {
+        const resp = await fetch(`http://localhost:8080/api/v1/user/${uuid}`, {mode:'cors'});
+        if (resp.ok) {
+            const json = await resp.json();
+            const fetchedUser:UserEntity = json;
+            console.log("fetched user = " + fetchedUser)
+            setUser(fetchedUser)
+        }
+    }
+     useEffect(() => {
+        fetchUsers();
+        console.log("uuid = " + uuid)
+    }, []);
     
     const fetchWishlist = async () => {
         var data: never[] = []
         try {
-        const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${uuid}`, {
+        const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${uuid}/${year}`, {
             mode:'cors',
             method: 'GET',
         });
@@ -36,9 +51,9 @@ const Wishlist = () => {
     return (
         <>
         <div className="text-white">
-            {user}'s Wishlist page
+            {user.name}'s Wishlist page
         </div>
-        <WishlistTable />
+        <WishlistTable uuid={uuid} year={Number(year)} />
     </>
     )
 }

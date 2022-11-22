@@ -9,7 +9,6 @@ interface HeaderProps {
 }
 
 const Header = ({...params}: HeaderProps) => {
-    console.log("user = " + params.user)
     const [isDropdown, setIsDropdown] = useState(false);
     const navigate = useNavigate();
     const goToHome = () => {
@@ -17,7 +16,6 @@ const Header = ({...params}: HeaderProps) => {
     }
 
     const goToProfile = (user:string) => {
-        console.log("user = " + user)
         navigate(`/${user}`)
         setIsDropdown(false)
     }
@@ -54,7 +52,7 @@ const Header = ({...params}: HeaderProps) => {
                         <div className="h-full mr-4">
                             <button className="h-full w-16 text-white" onClick={() => setIsDropdown(!isDropdown)}>
                                 <img className="rounded-full border-4 border-slate-50 object-cover bg-gray-300"
-                                    src={profile} />
+                                    src={typeof localStorage.getItem("picture_url") === 'string' ? localStorage.getItem("picture_url") || "" : profile} />
                             </button>
                         </div>
                     </div>

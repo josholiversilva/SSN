@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 
+type Nullable<T> = T | undefined | null;
+
 interface WishlistTableProps {
+    uuid: Nullable<string>,
+    year: number,
     isEdit?:boolean;
 }
 
 const WishlistTable = (params:WishlistTableProps) => {
-    const uuid = "3f68e019-d16a-4593-ae58-adc4da60a6f8"
     const [wishlist, setWishlist] = useState([])
     console.log('is edit = ' + params.isEdit)
     
     const fetchWishlist = async () => {
         var data: never[] = []
         try {
-        const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${uuid}/2022`, {
+        const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${params.uuid}/${params.year}`, {
             mode:'cors',
             method: 'GET',
         });

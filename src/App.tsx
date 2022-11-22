@@ -21,7 +21,6 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn))
-    console.log(localStorage.getItem("isLoggedIn"))
   }, [isLoggedIn])
 
   const handleLogin = (data: any) => {
@@ -30,11 +29,14 @@ function App() {
       localStorage.removeItem("email")
       localStorage.removeItem("picture_url")
       localStorage.removeItem("isLoggedIn")
+      localStorage.removeItem("uuid")
     } else {
       localStorage.setItem("user", data.name)
       localStorage.setItem("email", data.email)
       localStorage.setItem("picture_url", data.picture_url)
+      localStorage.setItem("uuid", data.uuid)
     }
+    console.log(data)
     setIsLoggedIn(data !== "" && data !== null)
   };
 
@@ -55,7 +57,7 @@ function App() {
               <Protected isLoggedIn={isLoggedIn}>
                 <Year />
               </Protected>} />
-            <Route path="groups/SSN/:year/:user/wishlist" element={
+            <Route path="groups/SSN/:year/:uuid/wishlist" element={
               <Protected isLoggedIn={isLoggedIn}>
                 <Wishlist />
               </Protected>} />

@@ -4,6 +4,8 @@ import WishlistTable from "../components/WishlistTable";
 
 const Profile = () => {
     const user = localStorage.getItem("user")
+    const year = 2022
+    const uuid = localStorage.getItem("uuid")
     const [isEdit, setIsEdit] = useState(false);
     console.log('is edit in profile = ' + isEdit)
 
@@ -21,7 +23,7 @@ const Profile = () => {
                         </svg>
                     </button>
                 </div>
-                <WishlistTable isEdit={isEdit} />
+                <WishlistTable isEdit={isEdit} uuid={uuid} year={year} />
             </div>
         </div>
         </>

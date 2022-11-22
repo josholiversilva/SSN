@@ -1,11 +1,13 @@
 import React from "react";
 import { GoogleLogin } from '@react-oauth/google';
+import { useNavigate } from "react-router-dom";
 
 interface LoginProps {
     handleLogin: (data: any) => void;
 }
 
 const Login = ({...params}: LoginProps) => {
+    const navigate = useNavigate();
     const handleFailure = (result: any) => {
         console.log("a failure happened")
         alert(result);
@@ -15,7 +17,6 @@ const Login = ({...params}: LoginProps) => {
         <>
             <GoogleLogin 
                 onSuccess={async c => {
-                    console.log(c.credential)
                     let data = ""
                     try {
                         const res = await fetch('http://localhost:8080/api/v1/google-auth', {
@@ -34,7 +35,7 @@ const Login = ({...params}: LoginProps) => {
                         console.log("error - " + e);
                     }
                     params.handleLogin(data) 
-                    console.log(data)
+                    navigate("/")
                 }}
                 onError={() => {
                     console.log('Login Failed');
