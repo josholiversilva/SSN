@@ -8,5 +8,5 @@ export default interface EventInfoEntity {
     description?: string,
     theme?: string,
     price_limit?: string,
-    group_name: string
+    group_name?: string
 }

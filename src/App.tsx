@@ -17,28 +17,31 @@ import Profile from './routes/Profile';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("isLoggedIn") || "false")
-    // true
   );
 
   useEffect(() => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn))
+    console.log(localStorage.getItem("isLoggedIn"))
   }, [isLoggedIn])
 
   const handleLogin = (data: any) => {
-    if (data === "") {
+    if (data === "" || data === null) {
       localStorage.removeItem("user")
       localStorage.removeItem("email")
+      localStorage.removeItem("picture_url")
+      localStorage.removeItem("isLoggedIn")
     } else {
       localStorage.setItem("user", data.name)
       localStorage.setItem("email", data.email)
+      localStorage.setItem("picture_url", data.picture_url)
     }
-    setIsLoggedIn(data !== "")
+    setIsLoggedIn(data !== "" && data !== null)
   };
 
   return (
     <>
       <div className='text-3xl font-bold h-screen w-full bg-[#121212]'>
-        <Header user={localStorage.getItem("user") || ""} />
+        <Header user={localStorage.getItem("user") || ""} doLogout={handleLogin} />
         <div className="ml-4 mt-4 mr-4">
           { !isLoggedIn ? <Login handleLogin={handleLogin} /> :
           <Routes>

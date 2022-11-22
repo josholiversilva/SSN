@@ -1,21 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import EventInfoEntity from "../entities/EventInfoEntity";
 import Card from "./Card";
 import CreateCard from "./CreateCard";
 
-interface GroupInterface {
-    name: string;
+type Nullable<T> = T | undefined;
+
+interface GroupProps {
+    name: string,
+    year: number,
+    eventInfo: Nullable<EventInfoEntity>
 }
 
-const Group = ({name}: GroupInterface) => {
+const Group = ({...params}: GroupProps) => {
     return (
         <>
             <div className="w-full h-1/3 flex-col space-y-4">
                 <div className="text-white h-10">
-                    {name}
+                    {params.name}
                 </div>
                 <div className="">
-                    <Card year={2022} group={name} />
+                    <Card year={2022} group={params.name} eventInfo={params.eventInfo} />
                 </div>
             </div>
         </>
