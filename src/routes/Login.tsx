@@ -19,7 +19,7 @@ const Login = ({...params}: LoginProps) => {
                 onSuccess={async c => {
                     let data = ""
                     try {
-                        const res = await fetch('http://localhost:8080/api/v1/google-auth', {
+                        const res = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/google-auth`, {
                             mode: 'cors',
                             method: 'POST',
                             body: JSON.stringify({

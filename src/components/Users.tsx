@@ -9,7 +9,7 @@ const Users = () => {
 
     const [users, setUsers] = useState([{}]);
     const fetchUsers = async () => {
-        const resp = await fetch(`http://localhost:8080/api/v1/user`, {mode:'cors'});
+        const resp = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/user`, {mode:'cors'});
         if (resp.ok) {
             const json = await resp.json();
             const users:UserEntity[] = json;

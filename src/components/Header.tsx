@@ -60,7 +60,7 @@ const Header = ({...params}: HeaderProps) => {
             </div>
             <div className="fixed w-full">
                 <div className={`float-right text-right text-white bg-gray-600 rounded-lg p-2 w-1/4 ${isDropdown ? "visible" : "invisible"}`}>
-                <div><button><div onClick={() => goToProfile(params.user)}>Profile</div></button></div>
+                <div><button><div onClick={() => goToProfile(params.user)}>My Wishlist</div></button></div>
                 <div><button><div onClick={() => handleLogout()}>Logout</div></button></div>
                 </div>
             </div>

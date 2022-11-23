@@ -36,7 +36,7 @@ const WishlistForm = () => {
 
   const postWishlist = async (item: string, price: string, url: string, description: string) => {
       try {
-      const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${uuid}`, {
+      const resp = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/wishlist/${uuid}`, {
           mode:'cors',
           method: 'POST',
           body: JSON.stringify({

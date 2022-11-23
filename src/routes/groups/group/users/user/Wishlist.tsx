@@ -15,7 +15,7 @@ const Wishlist = () => {
     const [wishlist, setWishlist] = useState([])
 
     const fetchUsers = async () => {
-        const resp = await fetch(`http://localhost:8080/api/v1/user/${uuid}`, {mode:'cors'});
+        const resp = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/user/${uuid}`, {mode:'cors'});
         if (resp.ok) {
             const json = await resp.json();
             const fetchedUser:UserEntity = json;
@@ -31,7 +31,7 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
         var data: never[] = []
         try {
-        const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${uuid}/${year}`, {
+        const resp = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/wishlist/${uuid}/${year}`, {
             mode:'cors',
             method: 'GET',
         });

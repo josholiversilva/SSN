@@ -8,5 +8,6 @@ export default interface UserEntity {
     shoe_size?: string,
     shirt_size?: string,
     pants_size?: string,
-    ring_size?: number
+    ring_size?: number,
+    picture_url?:string
 }

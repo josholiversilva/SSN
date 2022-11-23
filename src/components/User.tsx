@@ -14,7 +14,7 @@ const User = ({...params}:UserProps) => {
         <>
             <div className="flex drop-shadow-md rounded-lg p-1.5 mb-5">
                 <img className="w-28 h-28 rounded-full border-4 border-slate-50 object-cover bg-gray-300"
-                    src={profile_pic} />
+                    src={params.user.picture_url ? params.user.picture_url : profile_pic} />
                 <div className="flex flex-col px-5 py-1">
                     <h4 className="font-bold text-lg text-pink-600">{params.user.name}</h4>
                     <p className="mt-1 flex-1 font-light text-sm text-slate-500">{params.user.age === -1 ? "" : params.user.age}</p>

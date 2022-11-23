@@ -15,7 +15,7 @@ const WishlistTable = (params:WishlistTableProps) => {
     const fetchWishlist = async () => {
         var data: never[] = []
         try {
-        const resp = await fetch(`http://localhost:8080/api/v1/wishlist/${params.uuid}/${params.year}`, {
+        const resp = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/wishlist/${params.uuid}/${params.year}`, {
             mode:'cors',
             method: 'GET',
         });
@@ -29,7 +29,7 @@ const WishlistTable = (params:WishlistTableProps) => {
 
     const deleteItem = async (itemId: string) => {
         try {
-            const resp = await fetch(`http://localhost:8080/api/v1/wishlist`, {
+            const resp = await fetch(`${process.env.REACT_APP_DB_HOSTNAME}/api/v1/wishlist`, {
                 mode:'cors',
                 method: 'DELETE',
                 body: JSON.stringify({
